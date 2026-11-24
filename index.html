@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prime Fechaduras Inteligente | Consultoria, Venda e Instalação de Fechaduras Eletrônicas</title>
+  <style>
+    :root {
+      --bg-dark: #0b1320;
+      --bg-card: #131f33;
+      --bg-light: #f4f7fb;
+      --primary: #1d70b8;
+      --primary-hover: #155a96;
+      --accent: #25d366;
+      --text-light: #ffffff;
+      --text-muted: #94a3b8;
+      --text-dark: #1e293b;
+      --border: #23334d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Cabeçalho e Menu */
+    header {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      padding: 0.9rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .logo-badge {
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .brand-container:hover .logo-badge {
+      transform: scale(1.03);
+    }
+
+    .logo-badge img {
+      height: 110px;
+      width: auto;
+      max-width: 340px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
+    }
+
+    .brand-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .brand-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      line-height: 1.1;
+      color: #ffffff;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-subtitle {
+      font-size: 0.76rem;
+      color: #38bdf8;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      color: var(--text-light);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-btn.active {
+      background: var(--primary);
+      color: var(--text-light);
+    }
+
+    /* Controle das Páginas */
+    main {
+      flex: 1;
+    }
+
+    .page-section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Seção Hero (A - Atenção no modelo AIDA) */
+    .hero {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #162640 100%);
+      color: var(--text-light);
+      padding: 3.5rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      text-align: left;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      padding: 0.4rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h2 {
+      font-size: 2.45rem;
+      margin: 0 0 1.2rem;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .hero h2 span {
+      background: linear-gradient(90deg, #38bdf8 0%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      margin: 0 0 2rem;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card-img {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+      border: 2px solid rgba(56, 189, 248, 0.3);
+      position: relative;
+      height: 380px;
+      background: #0f172a;
+    }
+
+    .hero-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-floating-tag {
+      position: absolute;
+      bottom: -15px;
+      left: 20px;
+      background: #ffffff;
+      color: var(--text-dark);
+      padding: 0.75rem 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid #e2e8f0;
+      font-size: 0.85rem;
+    }
+
+    .hero-floating-tag strong {
+      display: block;
+      color: #0b1320;
+    }
+
+    /* Barra de Marcas Reconhecidas (Modelo Original) */
+    .brands-bar {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 1.5rem 5%;
+      text-align: center;
+    }
+
+    .brands-bar p {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #64748b;
+      margin-bottom: 1rem;
+    }
+
+    .brands-chips {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-chip {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 0.5rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 700;
+      color: #334155;
+      font-size: 0.95rem;
+    }
+
+    /* Seção Tipos de Portas Compatíveis */
+    .doors-section {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3.5rem 5%;
+    }
+
+    .doors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.8rem;
+    }
+
+    @media (max-width: 1024px) {
+      .doors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .doors-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .door-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.6rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .door-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+    }
+
+    .door-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      background: rgba(56, 189, 248, 0.12);
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .door-card h4 {
+      font-size: 1.15rem;
+      color: var(--bg-dark);
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    .door-card p {
+      font-size: 0.9rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .door-tag {
+      margin-top: auto;
+      padding-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Seção Ambientes Atendidos (5 na mesma linha) */
+    .places-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+    @media (max-width: 1024px) {
+      .places-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .places-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .place-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: all 0.25s ease;
+    }
+
+    .place-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(11, 19, 32, 0.08);
+    }
+
+    .place-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      display: inline-block;
+    }
+
+    .place-card h4 {
+      font-size: 1.1rem;
+      color: var(--bg-dark);
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    .place-card p {
+      font-size: 0.88rem;
+      color: #64748b;
+      line-height: 1.45;
+    }
+
+    /* Depoimentos (Prova Social - Desejo) */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.8rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .testimonial-card p {
+      color: #475569;
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .client-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .client-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .client-meta strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--bg-dark);
+    }
+
+    .client-meta small {
+      color: #94a3b8;
+      font-size: 0.8rem;
+    }
+
+    /* Bloco Final A - Ação (CTA Irresistível) */
+    .action-cta-section {
+      background: linear-gradient(135deg, #0b1320 0%, #132238 100%);
+      color: #ffffff;
+      padding: 4rem 5%;
+      border-radius: 16px;
+      text-align: center;
+      margin-top: 4rem;
+      position: relative;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .action-cta-section h3 {
+      font-size: 2.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .action-cta-section p {
+      color: #cbd5e1;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      font-size: 1.05rem;
+    }
+
+    .btn-whatsapp-pulse {
+      background-color: var(--accent);
+      color: #052e16;
+      text-decoration: none;
+      padding: 1.1rem 2.4rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-whatsapp-pulse:hover {
+      background-color: #20ba59;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.5);
+    }
+
+    @media (max-width: 850px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content {
+        text-align: center;
+      }
+      .cta-group {
+        justify-content: center;
+      }
+      .hero-card-img {
+        height: 280px;
+      }
+      .hero-floating-tag {
+        position: static;
+        margin-top: 1rem;
+        justify-content: center;
+      }
+    }
+
+    .btn-whatsapp {
+      background-color: var(--accent);
+      color: #052e16;
+      text-decoration: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.2s;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.9rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Container Padrão */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3.5rem 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title h3 {
+      font-size: 1.8rem;
+      color: var(--bg-dark);
+      margin-bottom: 0.5rem;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .section-title h3 {
+        white-space: normal;
+        font-size: 1.5rem;
+      }
+    }
+
+    .section-title p {
+      color: #64748b;
+    }
+
+    /* Grid de Benefícios (2 colunas) */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .benefit-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s ease;
+    }
+
+    .benefit-item:hover {
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(11, 19, 32, 0.06);
+    }
+
+    .benefit-icon {
+      background: rgba(29, 112, 184, 0.1);
+      color: var(--primary);
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .benefit-content h4 {
+      font-size: 1.05rem;
+      color: var(--bg-dark);
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+    }
+
+    .benefit-content p {
+      font-size: 0.9rem;
+      color: #64748b;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Cards Grid */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    .card-img-wrapper {
+      width: 100%;
+      height: 280px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .card:hover .card-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .card h4 {
+      font-size: 1.2rem;
+      color: var(--bg-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    /* Página Sobre o Profissional / Empresa */
+    .about-box {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .profile-placeholder {
+      background: linear-gradient(135deg, #0b1320 0%, #172a46 100%);
+      color: var(--text-light);
+      border-radius: 14px;
+      padding: 1.8rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 8px 24px rgba(11, 19, 32, 0.15);
+    }
+
+    .profile-placeholder img {
+      max-height: 160px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.6));
+      margin-bottom: 1.2rem;
+    }
+
+    .whatsapp-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: #25d366;
+      color: #052e16;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.65rem 1.2rem;
+      border-radius: 8px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .whatsapp-badge:hover {
+      background: #20ba59;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+    }
+
+    .about-text h3 {
+      font-size: 1.7rem;
+      color: var(--bg-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-text .subtitle {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .about-text p {
+      color: #475569;
+      margin-bottom: 1rem;
+    }
+
+    /* Galeria de Trabalhos */
+    .work-photo-placeholder {
+      background: #e2e8f0;
+      height: 180px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px dashed #94a3b8;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Modal de Termos e Privacidade */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 19, 32, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      color: var(--text-dark);
+      border-radius: 12px;
+      max-width: 750px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2.2rem;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      border: 1px solid #e2e8f0;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .modal-content h3 {
+      font-size: 1.6rem;
+      color: var(--bg-dark);
+      margin-bottom: 1rem;
+      padding-right: 2rem;
+    }
+
+    .modal-content h4 {
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-content p, .modal-content li {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .modal-content ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: #f1f5f9;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .footer-links {
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link-btn {
+      background: transparent;
+      border: none;
+      color: #64748b;
+      font-size: 0.82rem;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+
+    .footer-link-btn:hover {
+      color: #38bdf8;
+    }
+
+    /* Rodapé */
+    footer {
+      background: var(--bg-dark);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2rem 5%;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    footer strong {
+      color: var(--text-light);
+    }
+
+    @media (max-width: 768px) {
+      .about-box {
+        grid-template-columns: 1fr;
+      }
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho com Menu de Navegação -->
+  <header>
+    <div class="brand-container" onclick="openPage('home', document.querySelectorAll('.nav-btn')[0])">
+      <div class="logo-badge">
+        <img src="logo.png" alt="Prime Fechaduras Inteligente" />
+      </div>
+    </div>
+
+    <nav>
+      <button class="nav-btn active" onclick="openPage('home', this)">Home</button>
+      <button class="nav-btn" onclick="openPage('empresa', this)">Sobre a Empresa</button>
+      <button class="nav-btn" onclick="openPage('modelos', this)">Modelos</button>
+      <button class="nav-btn" onclick="openPage('contato', this)">Contato</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- PÁGINA 1: HOME (ESTRUTURA AIDA COMPLETA) -->
+    <section id="home" class="page-section active">
+      
+      <!-- 1. ATENÇÃO (A) - Hero de Alto Impacto com Imagem Real -->
+      <div class="hero">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-badge">📍 Atendimento em Uberlândia, Araguari e região</div>
+            <h2>Abra sua porta com um toque e <span>nunca mais se preocupe com chaves</span></h2>
+            <p>Venda e instalação especializada de fechaduras inteligentes com suporte técnico e recomendação personalizada. Proteção moderna para sua família com alinhamento milimétrico e acabamento sem danificar a porta.</p>
+            <div class="cta-group">
+              <a href="https://wa.me/5534996420674?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20fechadura%20eletrônica." target="_blank" class="btn-whatsapp">
+                Pedir Orçamento no WhatsApp
+              </a>
+              <button class="btn-secondary" onclick="openPage('empresa', document.querySelectorAll('.nav-btn')[1])">
+                Conhecer a Empresa
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-card-img">
+              <img src="modelo-app.webp" alt="Fechadura Inteligente instalada na porta" />
+            </div>
+            <div class="hero-floating-tag">
+              <span style="font-size: 1.5rem;">🔒</span>
+              <div>
+                <strong>Instalação Técnica Profissional</strong>
+                <span style="color: #64748b;">Sem folgas • Sem danificar a porta</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Marcas Reconhecidas (Modelo Original) -->
+      <div class="brands-bar">
+        <p>Trabalhamos e instalamos as principais marcas do mercado</p>
+        <div class="brands-chips">
+          <div class="brand-chip">Intelbras</div>
+          <div class="brand-chip">Papaiz</div>
+          <div class="brand-chip">Yale</div>
+          <div class="brand-chip">Tuya Smart</div>
+          <div class="brand-chip">Primebras</div>
+        </div>
+      </div>
+
+      
+      <!-- 2. INTERESSE (I) - 10 Vantagens Práticas e Racionais (Logo após marcas) -->
+      <div class="container" style="max-width: 1250px; padding-top: 3.5rem; padding-bottom: 3.5rem;">
+
+      <div class="container">
+        <div class="section-title">
+          <h3 style="white-space: nowrap; font-size: 1.7rem;">Por que trocar a chave convencional pela Fechadura Inteligente?</h3>
+          <p>Confira 10 motivos práticos para modernizar o acesso da sua casa ou empresa</p>
+        </div>
+
+        <div class="benefits-grid">
+          <!-- Coluna 1 -->
+          <div class="benefit-item">
+            <div class="benefit-icon">🚫</div>
+            <div class="benefit-content">
+              <h4>1. Fim das chaves perdidas ou esquecidas</h4>
+              <p>Nunca mais fique trancado do lado de fora ou gaste com chaveiros de emergência. Seu dedo, tag ou senha é a sua chave.</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">🔒</div>
+            <div class="benefit-content">
+              <h4>2. Travamento automático garantido</h4>
+              <p>Basta bater a porta e ela tranca sozinha em poucos segundos. Elimine de vez a dúvida: <em>"Será que eu tranquei a porta?"</em>.</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">🛡️</div>
+            <div class="benefit-content">
+              <h4>3. Impossível de violar com micha</h4>
+              <p>Não há tambor mecânico vulnerável a gazuas, michas ou cópias não autorizadas que colocam em risco fechaduras comuns.</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">⏱️</div>
+            <div class="benefit-content">
+              <h4>4. Senhas temporárias para visitas e prestadores</h4>
+              <p>Crie senhas com validade de horas ou dias para diaristas, obras ou hóspedes (Airbnb) sem precisar entregar chaves físicas.</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">📱</div>
+            <div class="benefit-content">
+              <h4>5. Abertura remota pelo celular</h4>
+              <p>Libere a entrada de familiares ou entregas mesmo estando no trabalho ou viajando, direto pelo aplicativo (modelos Wi-Fi).</p>
+            </div>
+          </div>
+
+          <!-- Coluna 2 -->
+          <div class="benefit-item">
+            <div class="benefit-icon">📊</div>
+            <div class="benefit-content">
+              <h4>6. Histórico completo de entradas</h4>
+              <p>Monitore quem entrou e em qual horário, recebendo notificações no celular quando seus filhos ou funcionários chegarem.</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">🚨</div>
+            <div class="benefit-content">
+              <h4>7. Alarme antiarrombamento integrado</h4>
+              <p>Disparo sonoro imediato em caso de tentativas forçadas de arrombamento, digitação consecutiva de senhas erradas ou fogo.</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">✨</div>
+            <div class="benefit-content">
+              <h4>8. Valorização e estética do imóvel</h4>
+              <p>Design moderno, elegante e de alto padrão que transforma a apresentação da sua porta de entrada na primeira impressão.</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">⚡</div>
+            <div class="benefit-content">
+              <h4>9. Agilidade no dia a dia com biometria</h4>
+              <p>Chegou com sacolas de compras ou pressa? Em menos de 0,5 segundo o leitor biométrico reconhece sua digital e destrava.</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">🔋</div>
+            <div class="benefit-content">
+              <h4>10. Autonomia e aviso de bateria fraca</h4>
+              <p>Funciona a pilhas com durabilidade de até 1 ano. Avisa semanas antes de acabar e possui entrada para carga de emergência.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; background: #f8fafc; border-left: 4px solid #38bdf8; padding: 0.9rem 1.2rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #475569; display: flex; align-items: center; gap: 0.75rem;">
+          <span style="font-size: 1.2rem;">💡</span>
+          <span><strong>Nota importante:</strong> As funcionalidades acima podem variar conforme o modelo e a marca escolhida (como abertura via Wi-Fi/aplicativo, biometria ou comandos de voz). Na <strong>Prime Fechaduras Inteligente</strong>, analisamos suas fotos e medidas pelo WhatsApp para indicar o modelo exato que atende às suas necessidades e à estrutura da sua porta antes do agendamento da instalação.</span>
+        </div>
+
+        
+      </div>
+      <div style="border-top: 1px solid #e2e8f0;"></div>
+
+<!-- SEÇÃO: TIPOS DE PORTAS COMPATÍVEIS -->
+      <div class="doors-section">
+        <div class="container" style="max-width: 1250px; padding-top: 0; padding-bottom: 0;">
+          <div class="section-title" style="margin-bottom: 1.5rem;">
+            <h3>Em quais tipos de portas é possível instalar?</h3>
+            <p>Trabalhamos com gabaritos técnicos específicos para cada material e estrutura</p>
+          </div>
+
+          <div class="doors-grid">
+            <!-- 1. Madeira Maciça / Tradicional -->
+            <div class="door-card">
+              <div class="door-icon">🚪</div>
+              <h4>Portas de Madeira</h4>
+              <p>Madeira maciça, compensado naval, MDF ou portas prontas de apartamentos (com espessura de 25 mm a 65 mm). Instalação padrão de sobrepor ou embutir.</p>
+              <span class="door-tag">✓ Sobrepor ou Embutir</span>
+            </div>
+
+            <!-- 2. Porta Pivotante -->
+            <div class="door-card">
+              <div class="door-icon">🏛️</div>
+              <h4>Portas Pivotantes</h4>
+              <p>Portas imponentes de alto padrão. Exigem alinhamento minucioso do eixo de giro e fechaduras de embutir com lingueta e trincos reforçados.</p>
+              <span class="door-tag">✓ Usinagem e Acabamento Fino</span>
+            </div>
+
+            <!-- 3. Portas de Vidro -->
+            <div class="door-card">
+              <div class="door-icon">🪟</div>
+              <h4>Portas de Vidro Temperado</h4>
+              <p>Fechaduras digitais especiais com fixação por pressão e adesivos industriais, sem necessidade de furar o vidro. Para portas de abrir ou correr.</p>
+              <span class="door-tag">✓ Fixação por Pressão (Sem Furo)</span>
+            </div>
+
+            <!-- 4. Portas de Metal e Alumínio -->
+            <div class="door-card">
+              <div class="door-icon">🛡️</div>
+              <h4>Metal e Alumínio</h4>
+              <p>Portas com perfis estreitos (tubulares), ferro ou esquadrias de alumínio. Utilizamos modelos slim desenvolvidos exatamente para áreas reduzidas.</p>
+              <span class="door-tag">✓ Modelos Especiais Slim</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO: ONDE INSTALAMOS (DIVERSIDADE DE AMBIENTES) -->
+        <div style="margin-top: 1rem; max-width: 1250px; margin-left: auto; margin-right: auto;">
+          <div class="section-title">
+            <h3>Soluções para Qualquer Tipo de Imóvel ou Empresa</h3>
+            <p>Atendemos desde residências a espaços corporativos com projetos sob medida</p>
+          </div>
+
+          <div class="places-grid">
+            <!-- 1. Casas e Condomínios -->
+            <div class="place-card">
+              <span class="place-icon">🏡</span>
+              <h4>Casas e Condomínios</h4>
+              <p>Segurança reforçada e comodidade para a entrada principal, áreas gourmet e portões de pedestres.</p>
+            </div>
+
+            <!-- 2. Apartamentos e Studios -->
+            <div class="place-card">
+              <span class="place-icon">🏢</span>
+              <h4>Apartamentos e Studios</h4>
+              <p>Ideal para rotinas familiares e imóveis de locação por temporada (Airbnb / Booking).</p>
+            </div>
+
+            <!-- 3. Escritórios e Consultórios -->
+            <div class="place-card">
+              <span class="place-icon">💼</span>
+              <h4>Escritórios e Consultórios</h4>
+              <p>Acesso rápido para funcionários e pacientes com controle de horários e portas de vidro ou madeira.</p>
+            </div>
+
+            <!-- 4. Lojas e Comércios -->
+            <div class="place-card">
+              <span class="place-icon">🛍️</span>
+              <h4>Lojas e Comércios</h4>
+              <p>Proteção de estoques, vitrines e salas de administração com histórico detalhado de acessos.</p>
+            </div>
+
+            <!-- 5. Galpões e Indústrias -->
+            <div class="place-card">
+              <span class="place-icon">🏭</span>
+              <h4>Galpões e Espaços Industriais</h4>
+              <p>Fechaduras robustas para controle de fluxo de equipes, áreas técnicas e depósitos operacionais.</p>
+            </div>
+          </div>
+        </div>
+
+        
+        <div style="margin: 3.5rem 0 2rem; border-top: 1px solid #e2e8f0;"></div>
+
+        
+
+        <!-- 3. DESEJO (D) - Por Que a Prime + Prova Social e Segurança -->
+        <div class="section-title">
+          <h3>Por que escolher a Prime Fechaduras Inteligente?</h3>
+          <p>O maior risco na fechadura digital é a instalação malfeita. Conosco, sua porta está segura.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h4>Instalação com Precisão Marceneira</h4>
+            <p>Corte limpo, furação no gabarito oficial e alinhamento milimétrico para portas de madeira, pivotantes ou apartamentos. Zero danos à sua porta ou ao acabamento.</p>
+          </div>
+          <div class="card">
+            <h4>Consultoria Técnica Grátis</h4>
+            <p>Realizamos análises técnicas e indicamos o equipamento ideal antes da compra, e depois agendamos a visita para a instalação definitiva.</p>
+          </div>
+          <div class="card">
+            <h4>Entrega Pronta e Testada</h4>
+            <p>Cadastramos as biometrias, senhas de segurança e tags no dia da instalação, além de orientar você e sua família para o uso diário.</p>
+          </div>
+        </div>
+
+        <!-- Prova Social (Avaliações de Clientes) -->
+        <div style="margin-top: 4.5rem;">
+          <div class="section-title" style="margin-bottom: 1.5rem;">
+            <h3>O que dizem nossos clientes</h3>
+            <p>Satisfação e segurança comprovadas em Uberlândia e região</p>
+          </div>
+          <div class="testimonial-grid">
+            <!-- Depoimento 1 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>"Instalação perfeita no meu apartamento no Santa Mônica. O acabamento ficou impecável, sem nenhuma lasca na porta e configurou tudo no meu celular na hora."</p>
+              <div class="client-info">
+                <div class="client-avatar">RM</div>
+                <div class="client-meta">
+                  <strong>Rodrigo Mendes</strong>
+                  <small>Uberlândia • Fechadura de Embutir</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Depoimento 2 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>"Eu tinha muito receio de mexer na minha porta pivotante. A consultoria da Prime foi essencial para escolher o modelo certo. Trabalho muito limpo e pontual!"</p>
+              <div class="client-info">
+                <div class="client-avatar">CS</div>
+                <div class="client-meta">
+                  <strong>Camila Silveira</strong>
+                  <small>Araguari • Fechadura Biométrica</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Depoimento 3 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>"Nunca mais precisei me preocupar com chave esquecida. Atendimento rápido, tiraram todas as dúvidas antes de fechar. Recomendo demais!"</p>
+              <div class="client-info">
+                <div class="client-avatar">FA</div>
+                <div class="client-meta">
+                  <strong>Felipe Andrade</strong>
+                  <small>Uberlândia • Fechadura Wi-Fi</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Depoimento 4 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>"Instalou na porta de vidro do meu consultório no centro. Serviço rápido, sem sujeira e muito caprichado. Os pacientes elogiam bastante a modernidade."</p>
+              <div class="client-info">
+                <div class="client-avatar">LN</div>
+                <div class="client-meta">
+                  <strong>Dra. Letícia Nogueira</strong>
+                  <small>Uberlândia • Porta de Vidro</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Depoimento 5 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>"Coloquei no meu imóvel que alugo pelo Airbnb. Agora crio senhas temporárias direto pelo aplicativo para os hóspedes. Facilitou minha vida em 100%!"</p>
+              <div class="client-info">
+                <div class="client-avatar">MS</div>
+                <div class="client-meta">
+                  <strong>Marcelo Soares</strong>
+                  <small>Uberlândia • Fechadura com App</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Depoimento 6 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>"Excelente profissional. Pontual, educado e paciente para ensinar eu e meus pais a cadastrarem a digital e a senha. Nota 10 pelo serviço em Araguari."</p>
+              <div class="client-info">
+                <div class="client-avatar">PT</div>
+                <div class="client-meta">
+                  <strong>Patrícia Toledo</strong>
+                  <small>Araguari • Fechadura de Sobrepor</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <!-- SEÇÃO: FORMAS DE PAGAMENTO ACEITAS -->
+        <div style="margin-top: 4.5rem; text-align: center;">
+          <div class="section-title" style="margin-bottom: 1.5rem;">
+            <h3>Formas de Pagamento Facilitadas</h3>
+            <p>Pague com total comodidade e segurança na conclusão do serviço</p>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; max-width: 900px; margin: 0 auto;">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.2rem 1.8rem; display: flex; align-items: center; gap: 0.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03); flex: 1; min-width: 220px; justify-content: center;">
+              <span style="font-size: 1.8rem;">💳</span>
+              <div style="text-align: left;">
+                <strong style="color: #0b1320; font-size: 1rem; display: block;">Cartão de Crédito</strong>
+                <span style="color: #64748b; font-size: 0.82rem;">Parcelamento facilitado</span>
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.2rem 1.8rem; display: flex; align-items: center; gap: 0.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03); flex: 1; min-width: 220px; justify-content: center;">
+              <span style="font-size: 1.8rem;">🏧</span>
+              <div style="text-align: left;">
+                <strong style="color: #0b1320; font-size: 1rem; display: block;">Cartão de Débito</strong>
+                <span style="color: #64748b; font-size: 0.82rem;">Todas as bandeiras</span>
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.2rem 1.8rem; display: flex; align-items: center; gap: 0.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03); flex: 1; min-width: 220px; justify-content: center;">
+              <span style="font-size: 1.8rem;">📱</span>
+              <div style="text-align: left;">
+                <strong style="color: #0b1320; font-size: 1rem; display: block;">PIX</strong>
+                <span style="color: #64748b; font-size: 0.82rem;">Aprovação imediata</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. AÇÃO (A) - CTA Final de Fechamento com WhatsApp -->
+        <div class="action-cta-section">
+          <h3>Qual fechadura é ideal para a sua porta?</h3>
+          <p>Envie agora mesmo uma foto da sua porta pelo WhatsApp. Nós analisamos a estrutura e passamos a recomendação técnica perfeita com o orçamento sem compromisso!</p>
+          <a href="https://wa.me/5534996420674?text=Olá!%20Gostaria%20de%20enviar%20uma%20foto%20da%20minha%20porta%20para%20receber%20um%20orçamento%20da%20Prime%20Fechaduras%20Inteligente." target="_blank" class="btn-whatsapp-pulse">
+            <span>📲</span> Enviar Foto da Porta no WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PÁGINA 2: SOBRE A EMPRESA -->
+    <section id="empresa" class="page-section">
+      <div class="container">
+        <div class="about-box">
+          <div class="profile-placeholder">
+            <img src="logo.png" alt="Prime Fechaduras Inteligente" />
+            <a href="https://wa.me/5534996420674?text=Olá!%20Gostaria%20de%20um%20orçamento%20com%20a%20Prime%20Fechaduras%20Inteligente." target="_blank" class="whatsapp-badge">
+              <span>📱</span> (34) 99642-0674
+            </a>
+          </div>
+          <div class="about-text">
+            <h3>Prime Fechaduras Inteligente</h3>
+            <span class="subtitle">Especialistas em Segurança Eletrônica, Portas e Controle de Acesso</span>
+            <p>A <strong>Prime Fechaduras Inteligente</strong> nasceu com a missão de transformar o acesso a residências, apartamentos, comércios e escritórios em Uberlândia, Araguari e região, unindo o que há de mais avançado em tecnologia de segurança à sofisticação e comodidade.</p>
+            <p>Nosso diferencial absoluto está no <strong>rigor técnico de acabamento e marcenaria</strong>. A instalação correta de uma fechadura digital exige precisão no corte, encaixe perfeito e alinhamento milimétrico da porta, garantindo que a trava funcione de forma suave e sem atrito, o que evita desgastes mecânicos e economiza a bateria do aparelho.</p>
+            <p>Trabalhamos de ponta a ponta: desde a consultoria para indicar a fechadura ideal para o seu perfil e o tipo da sua porta, até a venda, instalação técnica sem danos ao acabamento e configuração total de biometrias, senhas, tags e aplicativos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁGINA 3: MODELOS -->
+    <section id="modelos" class="page-section">
+      <div class="container">
+        <div class="section-title">
+          <h3>Tipos de Fechaduras Eletrônicas</h3>
+          <p>Trabalhamos com consultoria e instalação das principais marcas do mercado (Intelbras, Yale, Papaiz e outras)</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-img-wrapper">
+              <img src="modelo-sobrepor.jpg" alt="Fechadura Eletrônica de Sobrepor" />
+            </div>
+            <h4>Fechaduras de Sobrepor</h4>
+            <p>Ideais para portas de madeira ou metal de 25 mm a 50 mm. Excelente custo-benefício, instalação rápida sem alterar a fechadura original e abertura prática por senha ou biometria.</p>
+          </div>
+          <div class="card">
+            <div class="card-img-wrapper">
+              <img src="modelo-embutir.webp" alt="Fechadura Eletrônica de Embutir com Biometria" />
+            </div>
+            <h4>Fechaduras de Embutir</h4>
+            <p>Substituem a fechadura e a maçaneta tradicionais com visual limpo e sofisticado. Máxima segurança recomendada para portas principais residenciais, pivotantes e madeira maciça.</p>
+          </div>
+          <div class="card">
+            <div class="card-img-wrapper">
+              <img src="modelo-app.webp" alt="Fechadura Inteligente Wi-Fi com Biometria e Aplicativo" />
+            </div>
+            <h4>Modelos Conectados (Wi-Fi / App)</h4>
+            <p>Controle total na palma da sua mão. Permitem abertura remota pelo celular, envio de senhas temporárias à distância para visitas e acompanhamento de relatórios de acesso em tempo real.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁGINA 4: CONTATO -->
+    <section id="contato" class="page-section">
+      <div class="container" style="text-align: center; max-width: 700px;">
+        <div class="section-title">
+          <h3>Solicite seu Orçamento</h3>
+          <p>Envie uma foto da sua porta pelo WhatsApp e receba a recomendação ideal com valor de instalação</p>
+        </div>
+        <div class="card">
+          <h4>Atendimento Direto</h4>
+          <p style="margin-bottom: 1.5rem;">Uberlândia, Araguari e toda a região.<br>Telefone / WhatsApp: <strong>(34) 99642-0674</strong></p>
+          <a href="https://wa.me/5534996420674?text=Olá%20Henrique!%20Vi%20o%20site%20da%20Prime%20Fechaduras%20Inteligente%20e%20gostaria%20de%20um%20orçamento." target="_blank" class="btn-whatsapp">
+            Chamar no WhatsApp Agora
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Prime Fechaduras Inteligente</strong> — Consultoria, Venda e Instalação de Fechaduras Eletrônicas</p>
+    <p>Uberlândia, Araguari e Região | WhatsApp: (34) 99642-0674</p>
+    <div class="footer-links">
+      <button class="footer-link-btn" onclick="openModal('privacidade')">Política de Privacidade</button>
+      <span style="color: #475569;">•</span>
+      <button class="footer-link-btn" onclick="openModal('termos')">Termos de Uso</button>
+    </div>
+  </footer>
+
+  <!-- Modal Janela: Política de Privacidade e Termos de Uso -->
+  <div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOutside(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    function openPage(pageId, clickedBtn) {
+      // Esconde todas as páginas
+      const pages = document.querySelectorAll('.page-section');
+      pages.forEach(page => page.classList.remove('active'));
+
+      // Remove destaque de todos os botões do menu
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // Mostra a página escolhida e destaca o botão
+      document.getElementById(pageId).classList.add('active');
+      if (clickedBtn) {
+        clickedBtn.classList.add('active');
+      }
+
+      // Rola para o topo suavemente
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Controle de Modais (Termos e Privacidade)
+    const legalContents = {
+      privacidade: `
+        <h3>Política de Privacidade</h3>
+        <p>A <strong>Prime Fechaduras Inteligente</strong> valoriza a sua privacidade e a proteção dos seus dados pessoais, em total conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).</p>
+        
+        <h4>1. Coleta de Informações</h4>
+        <p>Coletamos apenas as informações estritamente necessárias para prestação de serviços e atendimento comercial, tais como: nome, telefone/WhatsApp, endereço para instalação e fotos ou detalhes da porta enviados voluntariamente para orçamento.</p>
+        
+        <h4>2. Utilização dos Dados</h4>
+        <p>Os dados coletados são utilizados exclusivamente para:</p>
+        <ul>
+          <li>Elaboração e envio de orçamentos técnicos;</li>
+          <li>Agendamento e execução de visitas de instalação ou manutenção;</li>
+          <li>Suporte e esclarecimento de dúvidas sobre fechaduras eletrônicas.</li>
+        </ul>
+
+        <h4>3. Compartilhamento e Segurança</h4>
+        <p>A Prime Fechaduras Inteligente <strong>não vende, não aluga e não compartilha</strong> suas informações pessoais com terceiros para fins comerciais. Seus dados são tratados com sigilo e segurança.</p>
+
+        <h4>4. Seus Direitos</h4>
+        <p>Você pode a qualquer momento solicitar a atualização, retificação ou exclusão definitiva dos seus dados de nossa base de contato pelo nosso canal oficial de WhatsApp: <strong>(34) 99642-0674</strong>.</p>
+      `,
+      termos: `
+        <h3>Termos de Uso</h3>
+        <p>Bem-vindo ao site da <strong>Prime Fechaduras Inteligente</strong>. Ao navegar e utilizar este site, você concorda com os termos e condições descritos a seguir:</p>
+
+        <h4>1. Finalidade do Site</h4>
+        <p>Este site tem caráter informativo e de apresentação de serviços técnicos de venda, consultoria e instalação de fechaduras eletrônicas e digitais na região de Uberlândia, Araguari e cidades vizinhas.</p>
+
+        <h4>2. Orçamentos e Serviços</h4>
+        <p>Os valores de produtos e serviços apresentados ou orçados via canais de atendimento estão sujeitos a confirmação com base nas características específicas da porta (espessura, tipo de madeira, furação e modelo de fechadura escolhido).</p>
+
+        <h4>3. Propriedade Intelectual</h4>
+        <p>Todos os textos, logomarcas, identidade visual e elementos gráficos deste site são de propriedade exclusiva da <strong>Prime Fechaduras Inteligente</strong> ou de seus respectivos licenciadores, sendo proibida a reprodução sem autorização prévia.</p>
+
+        <h4>4. Contato</h4>
+        <p>Para dúvidas a respeito destes termos ou de nossos serviços, entre em contato pelo telefone/WhatsApp <strong>(34) 99642-0674</strong>.</p>
+      `
+    };
+
+    function openModal(type) {
+      const modalBody = document.getElementById('modalBody');
+      modalBody.innerHTML = legalContents[type] || '';
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden'; // Impede rolagem de fundo
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = 'auto'; // Restaura rolagem
+    }
+
+    function closeModalOnOutside(event) {
+      if (event.target.id === 'modalOverlay') {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
